@@ -1,0 +1,6 @@
+datasources:aa5b36ebc4c470e30463a3a41e07b0d5f9bd33bc
+commandlineoptions:9f8598a690c7367accf83ead504756ddd374acc9
+suitesfrom:no-suites-from-option
+file:10893e54f8f7ab2736cb87edf1fca10de6b7bec9
+--suite Suites.Get
+--suite Suites.Post

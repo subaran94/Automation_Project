@@ -1,0 +1,21 @@
+#!/bash/sh
+
+echo -n "enter the number="
+
+read i
+
+if [ $i eq -1 ]
+then
+echo "==================="	
+print("yes")
+
+
+elif [ $i eq -2 ]
+then
+echo "================"
+print("No")
+
+echo "inavlid choice" $i
+exit
+fi
+

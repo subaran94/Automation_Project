@@ -1,0 +1,1 @@
+robot --outputdir TestSuit\Results TestSuit\TestCases\*.robot

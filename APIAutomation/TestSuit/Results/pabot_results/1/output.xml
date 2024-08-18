@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1 (Python 3.11.4 on win32)" generated="20240803 19:08:38.576" rpa="false" schemaversion="4">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="Post" source="D:\Study\Automation\APIAutomation\TestSuit\TestCases\Post.robot">
+<test id="s1-s1-t1" name="StoreUserProfile" line="7">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>HostSession</arg>
+<arg>${Host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240803 19:08:38.856" level="INFO">Creating Session using : alias=HostSession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240803 19:08:38.855" endtime="20240803 19:08:38.857"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=morpheus</arg>
+<arg>job=leader</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240803 19:08:38.858" level="INFO">${body} = {'name': 'morpheus', 'job': 'leader'}</msg>
+<status status="PASS" starttime="20240803 19:08:38.857" endtime="20240803 19:08:38.858"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240803 19:08:38.858" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20240803 19:08:38.858" endtime="20240803 19:08:38.858"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>HostSession</arg>
+<arg>${store_path}</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20240803 19:08:38.859" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20240803 19:08:39.293" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '37'} 
+ body={"name": "morpheus", "job": "leader"} 
+ </msg>
+<msg timestamp="20240803 19:08:39.294" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Sat, 03 Aug 2024 13:38:37 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'Report-To': '{"group":"heroku-nel","max_age":3600,"endpoints":[{"url":"https://nel.heroku.com/reports?ts=1722692317&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=cjPgxxd%2Fpp9obawJMFCYVOMXw4gYCNZD6HQesg0%2F%2Bd8%3D"}]}', 'Reporting-Endpoints': 'heroku-nel=https://nel.heroku.com/reports?ts=1722692317&amp;sid=c4c9725f-1ab0-44d8-820f-430df2718e11&amp;s=cjPgxxd%2Fpp9obawJMFCYVOMXw4gYCNZD6HQesg0%2F%2Bd8%3D', 'Nel': '{"report_to":"heroku-nel","max_age":3600,"success_fraction":0.005,"failure_fraction":0.05,"response_headers":["Via"]}', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-G07e68CNSXnI0yho7QsPpYJGUJU"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '8ad6b5890fa53ca6-BOM'} 
+ body={"name":"morpheus","job":"leader","id":"376","createdAt":"2024-08-03T13:38:37.864Z"} 
+ </msg>
+<msg timestamp="20240803 19:08:39.294" level="INFO">C:\Program Files\Python311\Lib\site-packages\urllib3\connectionpool.py:1095: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg timestamp="20240803 19:08:39.294" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20240803 19:08:38.858" endtime="20240803 19:08:39.294"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240803 19:08:39.296" level="INFO">201</msg>
+<status status="PASS" starttime="20240803 19:08:39.294" endtime="20240803 19:08:39.296"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240803 19:08:39.297" level="INFO">{"name":"morpheus","job":"leader","id":"376","createdAt":"2024-08-03T13:38:37.864Z"}</msg>
+<status status="PASS" starttime="20240803 19:08:39.296" endtime="20240803 19:08:39.297"/>
+</kw>
+<kw name="StatusCode_Validation" library="keyword">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${statuscode}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240803 19:08:39.299" level="INFO">201</msg>
+<status status="PASS" starttime="20240803 19:08:39.298" endtime="20240803 19:08:39.299"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240803 19:08:39.300" level="INFO">201</msg>
+<status status="PASS" starttime="20240803 19:08:39.299" endtime="20240803 19:08:39.300"/>
+</kw>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<arg>should be equal as integers</arg>
+<arg>${statuscode}</arg>
+<arg>${code}</arg>
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${statuscode}</arg>
+<arg>${code}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20240803 19:08:39.301" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240803 19:08:39.301" endtime="20240803 19:08:39.301"/>
+</kw>
+<status status="PASS" starttime="20240803 19:08:39.300" endtime="20240803 19:08:39.302"/>
+</kw>
+<status status="PASS" starttime="20240803 19:08:39.297" endtime="20240803 19:08:39.302"/>
+</kw>
+<status status="PASS" starttime="20240803 19:08:38.854" endtime="20240803 19:08:39.302"/>
+</test>
+<status status="PASS" starttime="20240803 19:08:38.640" endtime="20240803 19:08:39.302"/>
+</suite>
+<status status="PASS" starttime="20240803 19:08:38.594" endtime="20240803 19:08:39.304"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Post">Suites.Post</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20240803 19:08:38.859" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
